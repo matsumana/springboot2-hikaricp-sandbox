@@ -3,6 +3,9 @@ spring:
     url: jdbc:hsqldb:mem:.
     username: sa
     password:
+    hikari:
+      pool-name: mypool
+      register-mbeans: true
 
 management:
   server:
