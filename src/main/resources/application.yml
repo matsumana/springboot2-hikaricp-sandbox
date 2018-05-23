@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:hsqldb:mem:.
+    username: sa
+    password:
+
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: info, health, prometheus
+  metrics:
+    distribution:
+      percentiles:
+        http.server.requests: 0.5, 0.75, 0.95, 0.98, 0.99, 0.999, 1.0
