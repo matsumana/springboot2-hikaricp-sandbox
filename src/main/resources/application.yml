@@ -3,18 +3,17 @@ spring:
     url: jdbc:hsqldb:mem:.
     username: sa
     password:
-    hikari:
-      pool-name: mypool
-      register-mbeans: true
 
 management:
-  server:
-    port: 8081
-  endpoints:
-    web:
-      exposure:
-        include: info, health, prometheus
+  port: 8081
+  security:
+    enabled: false
   metrics:
     distribution:
       percentiles:
         http.server.requests: 0.5, 0.75, 0.95, 0.98, 0.99, 0.999, 1.0
+
+endpoints:
+  enabled: false
+  prometheus:
+    enabled: true

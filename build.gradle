@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.2.RELEASE'
+		springBootVersion = '1.5.13.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -26,9 +26,13 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	compile('org.springframework.boot:spring-boot-starter-jdbc') {
+		exclude group: 'org.apache.tomcat', module: 'tomcat-jdbc'
+	}
+	compile('com.zaxxer:HikariCP')
     compile('org.springframework.boot:spring-boot-starter-actuator')
-    compile('io.micrometer:micrometer-registry-prometheus')
+    compile('io.micrometer:micrometer-spring-legacy:1.0.4')
+    compile('io.micrometer:micrometer-registry-prometheus:1.0.4')
 	runtime('org.hsqldb:hsqldb')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
